@@ -1,12 +1,6 @@
 #include "main.h"
-class CarCenter {
-public:
-	string name;
-	string best_seller;
-	int cars_count;
-	int ovr_price;
-	int cheap_car;
-};
+#include "CarCenter.h"
+
 int main(void) {
 	CarCenter center1;
 
