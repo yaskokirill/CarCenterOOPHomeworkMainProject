@@ -1,25 +1,20 @@
-#include "main.h"
-#include "CarCenter.h"
+#include "Manager.h"
+#include <iostream>
+using namespace std;
 
-int main(void) {
-	CarCenter center1;
+int main() {
+	Car c1("Toyota", 4, 30000);
+	Car c2("Lexus", 7, 60000);
+	Car c3("Kia", 5, 38000);
+	Car c4("Mercedes", 6, 100000);
+	Car c5("Honda", 2, 70000);
 
-	cout << "Input name of your car center: ";
-	cin >> center1.name;
+	Car cars[]{ c1,c2,c3,c4,c5 };
 
-	cout << "Input model of a car that selling best: ";
-	cin >> center1.best_seller;
+	Manager manager;
 
-	cout << "Input number of car in your car center: ";
-	cin >> center1.cars_count;
-
-	cout << "Input overall price of your car center (sum of all cars prices): ";
-	cin >> center1.ovr_price;
-
-	cout << "Input price of the cheapest car in your center: ";
-	cin >> center1.cheap_car;
-
-	cout << "\nInfo about your car:" << endl;
+	cout << "Most expensive car is " << manager.getMaxPrice(cars, 5) << endl;
+	cout << "Cheapest car is " << manager.getMinPrice(cars, 5) << endl;
 
 	return 0;
-}
+}
