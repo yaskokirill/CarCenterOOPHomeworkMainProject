@@ -5,52 +5,45 @@
 using namespace std;
 
 class Car {
-public:
+private:
 	string name;
 	int age;
+	//int price;
+
+	static int count;
+
+public:
 	int price;
 
-	// default constructor
-	Car() {
-		//cout << "calling default constructor" << endl;
-		name = "no name";
-		age = 5;
-		price = 4;
-	}
+	static const int MAX_PRICE = 10000000;
+	static const int MIN_PRICE = 0;
 
-	// canonical constructor with parameters (arguments)
-	Car(string nm, int a, double p) {
-		//cout << "calling canonical constructor" << endl;
-		name = nm;
-		age = a;
-		price = p;
-	}
+	static const int MAX_AGE = 20;
+	static const int MIN_AGE = 0;
 
-	// constructor with parameters (arguments)
-	Car(string nm) {
-		//cout << "calling canonical constructor" << endl;
-		name = nm;
-		age = 0;
-		price = 0;
-	}
+	Car();
+	Car(string, int, int);
+	Car(string);
 
-	// constructor with parameters (arguments)
-	Car(double p) {
-		//cout << "calling canonical constructor" << endl;
-		name = "no name";
-		age = 0;
-		price = p;
-	}
+	~Car();
 
-	~Car() {
-		cout << "calling destructor" << endl;
-	}
+	string getName();
 
-	string convert() {
-		string s = "";
-		s += name;
-		s += ": age = " + to_string(age);
-		s += ", price = " + to_string(price);
-		return s;
+	int getAge();
+	void setAge(int);
+
+	int getPrice();
+	void setPrice(int);
+
+	static int getCount();
+
+	string convert();
+
+	Car operator+(int number) {
+		if (price + number > 10 || price + number < 0) {
+			return *this;
+		}
+
+		return Car(name, age, price + number);
 	}
 };
